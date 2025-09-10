@@ -10,7 +10,6 @@ import Layout from "../layouts/Layout.astro";
   <h1 class="text-2xl mb-6">Navigation avec iframe</h1>
   
   
-  <!-- Iframe affichant les pages d'espèces -->
   <iframe 
     name="species-frame"
     src="/species/Adelie"
@@ -21,21 +20,13 @@ import Layout from "../layouts/Layout.astro";
   ></iframe>
   
   <script>
-    // Méthode simple : hauteur fixe adaptative selon l'écran
     function adjustHeight() {
       const iframe = document.getElementById('species-iframe');
       const windowHeight = window.innerHeight;
-      
-      // Calculer une hauteur équilibrée (60% de la hauteur de l'écran)
-      // avec un minimum pour voir l'axe X sans être trop grand
       const newHeight = Math.max(windowHeight * 0.6, 550);
       iframe.style.height = newHeight + 'px';
     }
-    
-    // Redimensionner quand la fenêtre change de taille
     window.addEventListener('resize', adjustHeight);
-    
-    // Appeler au chargement
     document.addEventListener('DOMContentLoaded', adjustHeight);
   </script>
   
