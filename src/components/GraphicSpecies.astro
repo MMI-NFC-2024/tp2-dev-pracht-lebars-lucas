@@ -9,6 +9,15 @@ export interface Props {
 
 const { species } = Astro.props;
 const speciesData = penguins.filter(({species: speciesName}) => speciesName === species);
+
+// Définir les couleurs spécifiques pour chaque espèce
+const speciesColors = {
+  "Adelie": "oklch(0.623 0.214 259.815)",
+  "Gentoo": "oklch(0.795 0.184 86.047)", 
+  "Chinstrap": "oklch(0.705 0.213 47.604)"
+};
+
+const speciesColor = speciesColors[species] 
 ---
 
 <PlotFigure
@@ -17,7 +26,8 @@ const speciesData = penguins.filter(({species: speciesName}) => speciesName === 
       Plot.dot(speciesData, {
         x: "culmen_length_mm",
         y: "culmen_depth_mm",
-        stroke: "species",
+        stroke: speciesColor,
+        fill: "none",
       }),
     ],
   }}
